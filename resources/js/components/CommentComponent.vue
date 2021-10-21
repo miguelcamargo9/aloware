@@ -82,7 +82,7 @@
 export default {
     name: "Comment",
     props: {
-        someFunctionParent: {
+        getCommentsParent: {
             type: Function
         },
         comment: {
@@ -102,9 +102,8 @@ export default {
         };
     },
     methods: {
-        someFunction: function() {
-            // Do your stuff
-            this.someFunctionParent();
+        getComments: function() {
+            this.getCommentsParent();
         },
         getChildrenComments(commentId) {
             axios.get("/comments/" + commentId).then(response => {
@@ -126,10 +125,9 @@ export default {
                     };
                     this.erros = [];
                     this.$toastr.s(`The comment was created.`);
-                    this.someFunction();
+                    this.getComments();
                 })
                 .catch(error => {
-                    console.log("ERRORRRR " + error);
                     this.erros = error.response.data;
                 });
         }

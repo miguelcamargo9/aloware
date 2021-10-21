@@ -1,7 +1,7 @@
 <template>
     <div>
         <Comment
-            :someFunctionParent="getComments"
+            :getCommentsParent="getComments"
             v-for="comment in comments"
             :key="comment.id"
             :comment="comment"
@@ -24,7 +24,6 @@ export default {
     },
     methods: {
         getComments() {
-            console.log("trayendo commentsssss");
             axios.get("/comments").then(response => {
                 this.comments = response.data;
             });

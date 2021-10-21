@@ -2148,7 +2148,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Comment",
   props: {
-    someFunctionParent: {
+    getCommentsParent: {
       type: Function
     },
     comment: {
@@ -2168,9 +2168,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    someFunction: function someFunction() {
-      // Do your stuff
-      this.someFunctionParent();
+    getComments: function getComments() {
+      this.getCommentsParent();
     },
     getChildrenComments: function getChildrenComments(commentId) {
       var _this = this;
@@ -2196,9 +2195,8 @@ __webpack_require__.r(__webpack_exports__);
 
         _this2.$toastr.s("The comment was created.");
 
-        _this2.someFunction();
+        _this2.getComments();
       })["catch"](function (error) {
-        console.log("ERRORRRR " + error);
         _this2.erros = error.response.data;
       });
     }
@@ -2251,7 +2249,6 @@ __webpack_require__.r(__webpack_exports__);
     getComments: function getComments() {
       var _this = this;
 
-      console.log("trayendo commentsssss");
       axios.get("/comments").then(function (response) {
         _this.comments = response.data;
       });
@@ -20152,7 +20149,7 @@ var render = function() {
     _vm._l(_vm.comments, function(comment) {
       return _c("Comment", {
         key: comment.id,
-        attrs: { someFunctionParent: _vm.getComments, comment: comment }
+        attrs: { getCommentsParent: _vm.getComments, comment: comment }
       })
     }),
     1
